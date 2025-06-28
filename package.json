@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "mocha tests/trabalho-final.js"
+    "test": "npx playwright test"
   },
   "devDependencies": {
     "jest": "^30.0.3",

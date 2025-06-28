@@ -1,0 +1,34 @@
+name: Executar Testes com Mocha
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: |
+          npm install
+          npx playwright install  # Garantindo a instalação do Playwright
+
+      - name: Executar testes
+        run: npm test
+
+      - name: Garantir permissões para Playwright
+        run: sudo chown -R $USER:$USER ~/.cache
+
+
+

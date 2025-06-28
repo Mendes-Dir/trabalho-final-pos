@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "mocha trabalho-final.js"
+    "test": "mocha tests/trabalho-final.js"
   },
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "jest": "^30.0.3",
+    "mocha": "^10.8.2",
+    "playwright": "^1.53.1"
   }
 }
-

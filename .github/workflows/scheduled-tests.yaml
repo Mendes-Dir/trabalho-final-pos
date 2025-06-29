@@ -1,0 +1,27 @@
+# .github/workflows/scheduled-tests.yaml
+name: Scheduled Mocha Tests
+
+on:
+  schedule:
+    # Exemplo: Diariamente às 08:00 no fuso horário local (Fazenda Rio Grande, BRT/GMT-3)
+    # Isso se traduz para 11:00 UTC
+    - cron: '0 11 * * *'
+
+jobs:
+  run-scheduled-tests: # Um nome de job diferente é uma boa prática
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use a versão do Node.js que você precisa
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Mocha tests
+        run: npm test
